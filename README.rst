@@ -17,7 +17,7 @@ Setup
 
 ::
 
-$ git clone https://github.com/With-the-Ranks/chrismabry.git
+$ git clone https://github.com/cjmabry/chrismabry.git
 
 2. Create pipenv environment
 
