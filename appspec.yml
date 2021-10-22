@@ -1,0 +1,9 @@
+version: 0.0
+os: linux
+files:
+   - source: /
+     destination: /app
+hooks:
+   AfterInstall:
+    - location: scripts/post_install.py
+      runas: root

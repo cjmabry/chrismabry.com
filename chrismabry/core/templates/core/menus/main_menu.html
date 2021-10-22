@@ -1,0 +1,94 @@
+
+{% load menu_tags static wagtailcore_tags wagtailimages_tags %}
+
+<nav class="navbar navbar-expand-lg">
+    <div class="container">
+        <div class='logo-container navbar-brand'>
+            <a href='/?nosplash'>
+                <img src="{% static 'images/logo.png' %}" alt="{{SITE_NAME}}">
+            </a>
+        </div>
+        {% for item in menu_items %}
+        {% if item.handle == 'button-primary' %}
+        <div class="nav-item donate-nav-button d-lg-none ml-auto">
+            <div class="navbar-button-wrapper ">
+                <a class="btn btn-danger" href="{{item.href}}">{{item.text}}</a>
+            </div>
+        </div>
+        {% endif %}
+        {% endfor %}
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="bold dropdown-toggle">Menu</span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <div class="navbar-link-wrapper ml-auto" id="navbarText">
+                <ul class="navbar-nav">
+                    {% for item in menu_items %}
+                    {% if item.handle != 'button-secondary' and item.handle != 'button-primary' and item.handle != 'facebook' and item.handle != 'twitter' and item.handle != 'instagram' %}
+                    <li class="nav-item d-block pr-lg-3">
+                        <a class="nav-link {{item.active_class}}" href="{{item.href}}">{{ item.text }}</a>
+                    </li>
+                    {% endif %}
+                    {% endfor %}
+                </ul>
+            </div>
+
+            {% for item in menu_items %}
+                {% if item.handle == 'facebook' %}
+                <div class="nav-item donate-nav-button d-none d-lg-block">
+                    <div class="navbar-button-wrapper pr-lg-3">
+                        <a href="{{item.href}}">
+                            <span class="fab fa-facebook"></span>
+                        </a>
+                    </div>
+                </div>
+                {% endif %}
+            {% endfor %}
+
+            {% for item in menu_items %}
+                {% if item.handle == 'instagram' %}
+                <div class="nav-item donate-nav-button d-none d-lg-block">
+                    <div class="navbar-button-wrapper pr-lg-3">
+                        <a href="{{item.href}}">
+                            <span class="fab fa-instagram"></span>
+                        </a>
+                    </div>
+                </div>
+                {% endif %}
+            {% endfor %}
+
+            {% for item in menu_items %}
+                {% if item.handle == 'twitter' %}
+                <div class="nav-item donate-nav-button d-none d-lg-block">
+                    <div class="navbar-button-wrapper pr-lg-3">
+                        <a href="{{item.href}}">
+                            <span class="fab fa-twitter"></span>
+                        </a>
+                    </div>
+                </div>
+                {% endif %}
+            {% endfor %}
+
+            {% for item in menu_items %}
+            {% if item.handle == 'button-secondary' %}
+            <div class="navbar-button-wrapper pr-lg-3">
+                <a class="btn btn-primary" href="{{item.href}}">{{item.text}}</a>
+            </div>
+            {% endif %}
+            {% endfor %}
+
+            {% for item in menu_items %}
+            {% if item.handle == 'button-primary' %}
+            <div class="nav-item donate-nav-button d-none d-lg-block">
+                <div class="navbar-button-wrapper pr-lg-3">
+                    <a class="btn btn-danger" href="{{item.href}}">{{item.text}}</a>
+                </div>
+            </div>
+            {% endif %}
+            {% endfor %}
+
+        </div>
+    </div>
+</nav>
+
