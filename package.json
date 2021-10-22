@@ -1,12 +1,11 @@
 {
   "name": "chrismabry",
   "version": "0.1.0",
-  "dependencies": {},
+  "dependencies": {
+    "bulma": "^0.9.3"
+  },
   "devDependencies": {
-    "bootstrap": "4.3.1",
     "gulp-concat": "^2.6.1",
-    "jquery": "3.3.1",
-    "popper.js": "1.14.3",
     "autoprefixer": "^9.4.7",
     "browser-sync": "^2.14.0",
     "cssnano": "^4.1.10",

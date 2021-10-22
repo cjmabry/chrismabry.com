@@ -1,4 +1,6 @@
-{% load static i18n compress menu_tags %}<!DOCTYPE html>
+{% load static i18n compress menu_tags %}
+
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -9,11 +11,6 @@
     {% block meta %}
       {% include "core/partials/meta_partial.html" %}
     {% endblock %}
-
-    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
-    <!--[if lt IE 9]>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
-    <![endif]-->
 
     <link rel="icon" href="{% static 'images/favicons/favicon.png' %}">
 
@@ -29,37 +26,16 @@
   </head>
 
   <body>
-    {% if not enable_splash %}
-      {% main_menu max_levels=1 template="core/menus/main_menu.html" %}
-    {% else %}
-      <nav class="navbar navbar-expand-lg">
-        <div class="container">
-          <div class='logo-container navbar-brand ml-auto mr-auto'>
-            <a href='/'>
-              <img src="{% static 'images/logo.png' %}">
-            </a>
-          </div>
+      <nav class="navbar is-white" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+          <a class="navbar-item" href="/">
+            <img src="https://bulma.io/images/bulma-logo.png" alt="{{SITE_NAME}}" width="112" height="28">
+          </a>
         </div>
       </nav>
-    {% endif %}
 
     {% block content %}{% endblock %}
 
-    <!-- Le javascript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    {% block javascript %}
-      <!-- Vendor dependencies bundled as one file-->
-      {% compress js %}
-      <script src="{% static 'js/vendors.js' %}"></script>
-      {% endcompress %}
-
-      <!-- place project specific Javascript in this file -->
-      {% compress js %}
-      <script src="{% static 'js/project.js' %}"></script>
-      {% endcompress %}
-
-    {% endblock javascript %}
   </body>
 </html>
 

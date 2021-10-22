@@ -30,12 +30,9 @@ function pathsConfig(appName) {
 
   return {
 
-    bootstrapSass: `${vendorsRoot}/bootstrap/scss`,
-    vendorsJs: [
-      `${vendorsRoot}/jquery/dist/jquery.js`,
-      `${vendorsRoot}/popper.js/dist/umd/popper.js`,
-      `${vendorsRoot}/bootstrap/dist/js/bootstrap.js`,
-    ],
+    bulmaSass: `${vendorsRoot}/bulma`,
+    // vendorsJs: [
+    // ],
 
     app: this.app,
     templates: `${this.app}/templates`,
@@ -67,9 +64,7 @@ function styles() {
   return src(`${paths.sass}/project.scss`)
     .pipe(sass({
       includePaths: [
-
-        paths.bootstrapSass,
-
+        paths.bulmaSass,
         paths.sass
       ]
     }).on('error', sass.logError))
@@ -92,15 +87,15 @@ function scripts() {
 
 
 // Vendor Javascript minification
-function vendorScripts() {
-  return src(paths.vendorsJs)
-    .pipe(concat('vendors.js'))
-    .pipe(dest(paths.js))
-    .pipe(plumber()) // Checks for errors
-    .pipe(uglify()) // Minifies the js
-    .pipe(rename({ suffix: '.min' }))
-    .pipe(dest(paths.js))
-}
+// function vendorScripts() {
+//   return src(paths.vendorsJs)
+//     .pipe(concat('vendors.js'))
+//     .pipe(dest(paths.js))
+//     .pipe(plumber()) // Checks for errors
+//     .pipe(uglify()) // Minifies the js
+//     .pipe(rename({ suffix: '.min' }))
+//     .pipe(dest(paths.js))
+// }
 
 
 // Image compression
@@ -139,14 +134,14 @@ function initBrowserSync() {
 function watchPaths() {
   watch(`${paths.sass}/*.scss`, styles)
   watch(`${paths.templates}/**/*.html`).on("change", reload)
-  watch([`${paths.js}/*.js`, `!${paths.js}/*.min.js`], scripts).on("change", reload)
+  // watch([`${paths.js}/*.js`, `!${paths.js}/*.min.js`], scripts).on("change", reload)
 }
 
 // Generate all assets
 const generateAssets = parallel(
   styles,
   scripts,
-  vendorScripts,
+  // vendorScripts,
   imgCompression
 )
 
